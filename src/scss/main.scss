@@ -22,3 +22,37 @@ TABLE OF CONTENTS:
 *, *::before, *::after {
 	box-sizing: border-box;
 }
+
+body{
+	font-family: 'Lucida Sans', sans-serif, serif;
+}
+
+a{
+	text-decoration: none;
+	color: unset;
+}
+
+.display-grid{
+	display: grid;
+	grid-template-columns: 0.2fr 1fr 0.2fr;
+	grid-auto-rows: auto;
+}
+
+.site-heading{
+	@include mixins.heading-row;
+	padding: 1rem 0rem 0.25rem;
+	font-weight: bold;
+	font-size: 1.5rem;
+
+	&__subheading{
+		@include mixins.heading-row;
+		font-size: 1.15rem;
+		padding-bottom: 0.25rem;
+	}
+}
+
+.search-controls{
+	grid-column: 1/-1;
+	background: rgba(211,211,211,0.3);
+	display: grid;
+}

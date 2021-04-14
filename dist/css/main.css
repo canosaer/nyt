@@ -151,4 +151,54 @@ TABLE OF CONTENTS:
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
+body {
+  font-family: "Lucida Sans", sans-serif, serif;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+.display-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0.2fr 1fr 0.2fr;
+  grid-template-columns: 0.2fr 1fr 0.2fr;
+  grid-auto-rows: auto;
+}
+
+.site-heading {
+  font-family: Georgia, serif;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  text-align: center;
+  width: 17rem;
+  padding: 1rem 0rem 0.25rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.site-heading__subheading {
+  font-family: Georgia, serif;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  text-align: center;
+  width: 17rem;
+  font-size: 1.15rem;
+  padding-bottom: 0.25rem;
+}
+
+.search-controls {
+  grid-column: 1/-1;
+  background: rgba(211, 211, 211, 0.3);
+  display: -ms-grid;
+  display: grid;
+}
 /*# sourceMappingURL=main.css.map */
