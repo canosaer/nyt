@@ -11,13 +11,33 @@
 	</head>
 
 	<body>
+		<main class="content-grid">
+			<h1 class="site-heading">NYT Article Finder</h1>
+			<section class="search-controls">
+				<p class="article-count"></p>
+				<input class="article-search__input" id="term" name="term">
+				<div class="article-search__button"></div>
+				<div class="search-menu__active-sort">Sort by Relevance</div>
+				<div class="search-menu__sort-list">
+					<div class="search-menu__relevance">Sort by Relevance</div>
+					<div class="search-menu__newest">Sort by Newest</div>
+					<div class="search-menu__oldest">Sort by Oldest</div>
+				</div>
+				<div class="date-range__button">Date Range <span class="date-range__symbol">&gt;&lt;</span></div>
+				<div class="date-range__input">
+					<input class="date-range__begin" id="begin-date" name="begin-date">
+					<p class="date-range__separator">to</p>
+					<input class="date-range__end" id="end-date" name="end-date">
+				</div>
+			</section>
+		</main>
 
-		<form method="get" name="article-search">
+		<!-- <form class="article-search" method="get" name="article-search">
 			<p class="message"></p>
 			<label for="term">Term</label>
-			<input id="term" name="term">
+			<input class="search-input" id="term" name="term">
 			<button type="submit" class="get-btn">Search</button>
-		</form>
+		</form> -->
 
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src="dist/js/main.js"></script>

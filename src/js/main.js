@@ -1,23 +1,23 @@
 class NYT_SearchAPI {
     API_BASE_URL = `https://api.nytimes.com/svc/search/v2/articlesearch.json`
-    API_KEY = `A1AMntlR77BOSIKIhTCl7YtvA3MjAW3U`
+    
+    API_KEY = `s1jci6o1poZJW3TJJdvuxK9q6bzo3U80`
 
     constructor() {
         this.setupListener()
     }
 
     setupListener() {
-        const form = document.querySelector(`form[name="article-search"]`)
-        form.addEventListener(`submit`, this.handleSearch)
+        const form = document.querySelector(`.article-search__button`)
+        form.addEventListener(`click`, this.handleSearch)
     }
 
     handleSearch = (evt) => {
-        evt.preventDefault()
         console.log(`searching...`)
 
         const term = document.querySelector(`input[name="term"]`)
         const data = {
-            q: term,
+            q: term.value,
             'api-key': this.API_KEY
         }
 
@@ -27,7 +27,7 @@ class NYT_SearchAPI {
     processResults = (response) => {
         console.log(`got results!`, response)
 
-        // const results = response.data.response.docs
+        const results = response.data.response.docs
         // results.array.forEach(element => {
             
         // });
