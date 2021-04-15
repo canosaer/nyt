@@ -106,7 +106,7 @@ a{
 	color: gray;
 	font-size: 0.85rem;
 	cursor: pointer;
-	padding-left: 1.5rem;
+	padding-left: 1.1rem;
 
 	&:after{
 		content: "";
@@ -117,7 +117,7 @@ a{
 		border-bottom: 2px solid gray;
 		transform: rotate(45deg);
 		top: -3px;
-		right: 0rem;
+		right: 0.3rem;
 	}
 
 	&:hover{

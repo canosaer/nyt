@@ -266,7 +266,7 @@ a {
   color: gray;
   font-size: 0.85rem;
   cursor: pointer;
-  padding-left: 1.5rem;
+  padding-left: 1.1rem;
 }
 .search-menu:after {
   content: "";
@@ -278,7 +278,7 @@ a {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   top: -3px;
-  right: 0rem;
+  right: 0.3rem;
 }
 .search-menu:hover {
   color: black;
