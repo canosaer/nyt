@@ -170,7 +170,8 @@ a{
 		display: grid;
 		grid-template-columns: 0.15fr 0.05fr 0.7fr 0.25fr;
 		grid-auto-rows: auto;
-		padding-top: 1.75rem;
+		padding: 1.75rem 0rem;
+		border-bottom: 1px solid lightgray;
 	}
 
 	&__date{
