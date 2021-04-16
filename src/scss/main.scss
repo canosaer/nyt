@@ -7,7 +7,8 @@ AUTHOR:		Eric Canosa
 TABLE OF CONTENTS:
 
 0. Initialization
-1. Styles
+1. Appearance
+2. Utility
 
 ==============================================
 */
@@ -17,7 +18,7 @@ TABLE OF CONTENTS:
 @use 'variables';
 @use 'mixins';
 
-/* 1. Styles ================================= */
+/* 1. Appearance ============================= */
 
 *, *::before, *::after {
 	box-sizing: border-box;
@@ -95,6 +96,7 @@ a{
 	color: gray;
 	font-size: 0.75rem;
 	padding: 2rem 0rem 0.6rem 0.1rem;
+	min-height: 3.35rem;
 }
 
 .search-menu{
@@ -116,8 +118,8 @@ a{
 		border-right: 2px solid gray;
 		border-bottom: 2px solid gray;
 		transform: rotate(45deg);
-		top: -3px;
-		right: 0.3rem;
+		top: 0px;
+		left: 11.75vw;
 	}
 
 	&:hover{
@@ -168,7 +170,7 @@ a{
 	&__row{
 		grid-column: 2/5;
 		display: grid;
-		grid-template-columns: 0.15fr 0.05fr 0.7fr 0.25fr;
+		grid-template-columns: 0.17fr 0.05fr 0.7fr 0.25fr;
 		grid-auto-rows: auto;
 		padding: 1.75rem 0rem;
 		border-bottom: 1px solid lightgray;
@@ -213,5 +215,9 @@ a{
 		grid-column: 4/5;
 		background: red;
 		grid-row: 1/5;
+		max-height: 7.5rem;
+		max-width: 11.5rem;
 	}
 }
+
+/* 2. Utility ============================= */
