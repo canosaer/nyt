@@ -21,15 +21,15 @@
 				<p class="article-count"></p>
 				<input class="search-controls__input" id="term" name="term">
 				<img class="search-controls__button" src="src/img/magnifying-glass.svg" alt="search button"></img>
-				<div class="search-menu">Sort by Relevance <i class="fas fa-chevron-down search-menu__arrow"></i></i>
-					<ul class="search-menu__sort-list">
-						<li class="search-menu__relevance">Sort by Relevance</li>
-						<li class="search-menu__newest">Sort by Newest</li>
-						<li class="search-menu__oldest">Sort by Oldest</li>
+				<div class="search-menu"><span class="search-menu__active"><span class="search-menu__text">Sort by Relevance</span><i class="fas fa-chevron-down search-menu__arrow"></i></span>
+					<ul class="search-menu__sort-list hidden">
+						<li class="search-menu__item search-menu__item_relevance">Sort by Relevance</li>
+						<li class="search-menu__item search-menu__item_newest">Sort by Newest</li>
+						<li class="search-menu__item search-menu__item_oldest">Sort by Oldest</li>
 					</ul>
 				</div>
 				<div class="date-range"><span class="date-range__clickable">Date Range <span class="date-range__symbol">&gt;&lt;</span></span>
-					<div class="date-range__input">
+					<div class="date-range__input hidden">
 						<input class="date-range__input-field date-range__input-field_begin" id="begin-date" name="begin-date" type="date">
 						<p class="date-range__separator">to</p>
 						<input class="date-range__input-field date-range__input-field_end" id="end-date" name="end-date" type="date">

@@ -6,6 +6,10 @@ class NYT_SearchAPI {
     constructor() {
         this.searchInput = document.querySelector(`input[name="term"]`)
         this.dateFilter = false
+        this.menuButton = document.querySelector(`.search-menu__active`)
+        this.firstOpen = true
+        this.sortList = document.querySelector(`.search-menu__sort-list`)
+        this.sortText = document.querySelector(`.search-menu__text`)
 
         this.setupListener()
     }
@@ -17,32 +21,60 @@ class NYT_SearchAPI {
         searchButton.addEventListener(`click`, this.handleSearch)
         this.searchInput.addEventListener(`keyup`, this.checkForEnter)
         dateRangeButton.addEventListener(`click`, this.handleDateRangeClick)
+        this.menuButton.addEventListener(`click`, this.handleMenuClick)
     }
 
     handleDateRangeClick = (evt) => {
         const dateRangeSymbol = document.querySelector(`.date-range__symbol`)
         const dateRangeInput = document.querySelector(`.date-range__input`)
 
-        if(window.getComputedStyle(dateRangeInput).getPropertyValue(`display`) === `none`){
-            dateRangeInput.style.display = `flex`
+        if(dateRangeInput.classList.contains(`hidden`)){
+            dateRangeInput.classList.remove(`hidden`)
             dateRangeSymbol.textContent = `< >`
             this.dateFilter = true
         }
         else {
-            dateRangeInput.style.display = `none`
+            dateRangeInput.classList.add(`hidden`)
             dateRangeSymbol.textContent = `><`
             this.dateFilter = false
         }
+    }
+
+    handleMenuClick = (evt) => {
+
+        this.sortList.classList.toggle(`hidden`)
+        if(this.firstOpen){
+            let sortMenuItems = document.querySelectorAll(`.search-menu__item`)
+            this.firstOpen = false
+            sortMenuItems.forEach(item => {
+                item.addEventListener(`click`, this.handleMenuItemClick)
+            });
+        }
+    }
+
+    handleMenuItemClick = (evt) => {
+        if(this.sortText.textContent != evt.target.textContent){
+            this.sortText.textContent = evt.target.textContent
+            if(this.searchInput.value){
+                this.handleSearch()
+            }
+        }
+        this.sortList.classList.toggle(`hidden`)
     }
 
     handleSearch = (evt) => {
         const beginDate = document.querySelector(`.date-range__input-field_begin`)
         const endDate = document.querySelector(`.date-range__input-field_end`)
 
+        let selectedSort = `relevance`
+
+        if(this.sortText.textContent.indexOf(`Newest`) !== -1) selectedSort = `newest`
+        else if(this.sortText.textContent.indexOf(`Oldest`) !== -1) selectedSort = `oldest`
+        
         const data = {
             q: this.searchInput.value,
             'api-key': this.API_KEY,
-            sort: `relevance`,
+            sort: selectedSort,
         }
 
         if(this.dateFilter && beginDate.value){
@@ -115,7 +147,7 @@ class NYT_SearchAPI {
             let photoAnchor = document.createElement(`a`)
             photoAnchor.classList.add(`results__photo`)
             if(doc.multimedia.length !== 0){
-                photoAnchor.style.background = `url("https://www.nytimes.com/${doc.multimedia[16].url}")`
+                photoAnchor.style.background = `url("https://www.nytimes.com/${doc.multimedia[0].url}")`
             }
             photoAnchor.style.backgroundSize = `cover`
             photoAnchor.style.backgroundPoisition = `center`
