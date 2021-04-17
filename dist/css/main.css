@@ -298,8 +298,7 @@ a {
 }
 .date-range__input {
   position: absolute;
-  display: -webkit-flex;
-  display: flex;
+  display: none;
   width: 18rem;
   -webkit-justify-content: space-between;
           justify-content: space-between;
@@ -321,6 +320,9 @@ a {
 .date-range:hover {
   color: black;
 }
+.date-range:hover .date-range__separator {
+  color: gray;
+}
 
 .results {
   display: -ms-grid;
@@ -336,8 +338,8 @@ a {
   grid-column: 2/5;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 0.17fr 0.05fr 0.7fr 0.4fr;
-  grid-template-columns: 0.17fr 0.05fr 0.7fr 0.4fr;
+  -ms-grid-columns: 0.19fr 0.05fr 0.7fr 0.4fr;
+  grid-template-columns: 0.19fr 0.05fr 0.7fr 0.4fr;
   grid-auto-rows: auto;
   padding: 1.75rem 0rem;
   border-bottom: 1px solid lightgray;
@@ -386,7 +388,7 @@ a {
   -ms-grid-column: 4;
   -ms-grid-column-span: 1;
   grid-column: 4/5;
-  background: red;
+  background: rgba(211, 211, 211, 0.3);
   -ms-grid-row: 1;
   -ms-grid-row-span: 4;
   grid-row: 1/5;

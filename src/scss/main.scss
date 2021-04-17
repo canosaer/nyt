@@ -137,7 +137,7 @@ a{
 
 	&__input{
 		position: absolute;
-		display: flex;
+		display: none;
 		width: 18rem;
 		justify-content: space-between;
 		align-items: center;
@@ -160,6 +160,10 @@ a{
 	&:hover{
 		color: black;
 	}
+
+	&:hover &__separator{
+		color: gray;
+	}
 }
 
 .results{
@@ -171,7 +175,7 @@ a{
 	&__row{
 		grid-column: 2/5;
 		display: grid;
-		grid-template-columns: 0.17fr 0.05fr 0.7fr 0.4fr;
+		grid-template-columns: 0.19fr 0.05fr 0.7fr 0.4fr;
 		grid-auto-rows: auto;
 		padding: 1.75rem 0rem;
 		border-bottom: 1px solid lightgray;
@@ -214,7 +218,7 @@ a{
 
 	&__photo{
 		grid-column: 4/5;
-		background: red;
+		background: rgba(211,211,211,0.3);
 		grid-row: 1/5;
 		max-height: 7.5rem;
 		max-width: 11.5rem;

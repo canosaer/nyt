@@ -5,30 +5,64 @@ class NYT_SearchAPI {
 
     constructor() {
         this.searchInput = document.querySelector(`input[name="term"]`)
+        this.dateFilter = false
 
         this.setupListener()
     }
 
     setupListener() {
         const searchButton = document.querySelector(`.search-controls__button`)
-        const dateRangeButton = document.querySelector(`.date-range`)
+        const dateRangeButton = document.querySelector(`.date-range__clickable`)
 
         searchButton.addEventListener(`click`, this.handleSearch)
         this.searchInput.addEventListener(`keyup`, this.checkForEnter)
-        dateRangeButton.addEventListener(`click`, this.expandDates)
+        dateRangeButton.addEventListener(`click`, this.handleDateRangeClick)
     }
 
-    expandDates = (evt) => {
-        
+    handleDateRangeClick = (evt) => {
+        const dateRangeSymbol = document.querySelector(`.date-range__symbol`)
+        const dateRangeInput = document.querySelector(`.date-range__input`)
+
+        if(window.getComputedStyle(dateRangeInput).getPropertyValue(`display`) === `none`){
+            dateRangeInput.style.display = `flex`
+            dateRangeSymbol.textContent = `< >`
+            this.dateFilter = true
+        }
+        else {
+            dateRangeInput.style.display = `none`
+            dateRangeSymbol.textContent = `><`
+            this.dateFilter = false
+        }
     }
 
     handleSearch = (evt) => {
+        const beginDate = document.querySelector(`.date-range__input-field_begin`)
+        const endDate = document.querySelector(`.date-range__input-field_end`)
+
         const data = {
             q: this.searchInput.value,
-            'api-key': this.API_KEY
+            'api-key': this.API_KEY,
+            sort: `relevance`,
         }
 
+        if(this.dateFilter && beginDate.value){
+            data.begin_date = this.removeDateDashes(beginDate.value)
+        }
+        else data.begin_date = null
+
+        if(this.dateFilter && endDate.value){
+            data.end_date = this.removeDateDashes(endDate.value)
+        }
+        else data.end_date = null
+
         axios.get( this.API_BASE_URL, { params: data }).then(this.processResults)
+    }
+
+    removeDateDashes = (dateString) => {
+        let year  = dateString.slice(0,4)
+        let month = dateString.slice(5,7)
+        let day = dateString.slice(8,10)
+        return year+month+day
     }
 
     checkForEnter = (evt) => {
@@ -80,12 +114,14 @@ class NYT_SearchAPI {
 
             let photoAnchor = document.createElement(`a`)
             photoAnchor.classList.add(`results__photo`)
-            photoAnchor.style.background = `url("https://www.nytimes.com/${doc.multimedia[16].url}")`
+            if(doc.multimedia.length !== 0){
+                photoAnchor.style.background = `url("https://www.nytimes.com/${doc.multimedia[16].url}")`
+            }
             photoAnchor.style.backgroundSize = `cover`
             photoAnchor.style.backgroundPoisition = `center`
+            docRow.appendChild(photoAnchor)
             photoAnchor.href = doc.web_url
             photoAnchor.setAttribute(`target`, `_blank`)
-            docRow.appendChild(photoAnchor)
 
             resultsSection.appendChild(docRow)
 
