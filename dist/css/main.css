@@ -298,7 +298,18 @@ a {
 }
 .date-range__input {
   position: absolute;
-  display: none;
+  display: -webkit-flex;
+  display: flex;
+  width: 18rem;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-align-items: center;
+          align-items: center;
+  top: 0.6rem;
+  left: 6.5rem;
+}
+.date-range__input-field {
+  max-width: 8rem;
 }
 .date-range__symbol {
   position: absolute;

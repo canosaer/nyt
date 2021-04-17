@@ -137,7 +137,16 @@ a{
 
 	&__input{
 		position: absolute;
-		display: none;
+		display: flex;
+		width: 18rem;
+		justify-content: space-between;
+		align-items: center;
+		top: 0.6rem;
+		left: 6.5rem;
+	}
+
+	&__input-field{
+		max-width: 8rem;
 	}
 
 	&__symbol{

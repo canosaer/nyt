@@ -11,9 +11,15 @@ class NYT_SearchAPI {
 
     setupListener() {
         const searchButton = document.querySelector(`.search-controls__button`)
+        const dateRangeButton = document.querySelector(`.date-range`)
 
         searchButton.addEventListener(`click`, this.handleSearch)
         this.searchInput.addEventListener(`keyup`, this.checkForEnter)
+        dateRangeButton.addEventListener(`click`, this.expandDates)
+    }
+
+    expandDates = (evt) => {
+        
     }
 
     handleSearch = (evt) => {
