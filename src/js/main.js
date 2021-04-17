@@ -38,11 +38,40 @@ class NYT_SearchAPI {
             let docRow = document.createElement(`div`)
             docRow.classList.add(`results__row`)
 
-            let docDateP = document.createElement(`p`)
-            docDateP.classList.add(`results__date`)
+            let dateP = document.createElement(`p`)
+            dateP.classList.add(`results__date`)
             let formattedDate = this.parseDate(doc.pub_date)
-            docDateP.textContent = formattedDate
-            docRow.appendChild(docDateP)
+            dateP.textContent = formattedDate
+            docRow.appendChild(dateP)
+
+            let sectionHeading = document.createElement(`h3`)
+            sectionHeading.classList.add(`results__section`)
+            sectionHeading.textContent = doc.section_name
+            docRow.appendChild(sectionHeading)
+
+            let titleHeading = document.createElement(`a`)
+            titleHeading.href = doc.web_url
+            titleHeading.setAttribute(`target`, `_blank`)
+            titleHeading.classList.add(`results__title`)
+            titleHeading.textContent = doc.headline.main
+            docRow.appendChild(titleHeading)
+
+            let astractP = document.createElement(`p`)
+            astractP.classList.add(`results__abstract`)
+            astractP.textContent = doc.abstract
+            docRow.appendChild(astractP)
+
+            let bylineP = document.createElement(`p`)
+            bylineP.classList.add(`results__byline`)
+            bylineP.textContent = doc.byline.original
+            docRow.appendChild(bylineP)
+
+            let photoDiv = document.createElement(`div`)
+            photoDiv.classList.add(`results__photo`)
+            photoDiv.style.background = `url("https://www.nytimes.com/${doc.multimedia[16].url}")`
+            photoDiv.style.backgroundSize = `cover`
+            photoDiv.style.backgroundPoisition = `center`
+            docRow.appendChild(photoDiv)
 
             resultsSection.appendChild(docRow)
 
@@ -53,6 +82,7 @@ class NYT_SearchAPI {
         let month = ``
         let year  = dateString.slice(0,4)
         let monthString = dateString.slice(5,7)
+
         if(monthString===`01`) month = `Jan. `
         else if(monthString===`02`) month = `Feb. `
         else if(monthString===`03`) month = `Mar. `
@@ -66,10 +96,11 @@ class NYT_SearchAPI {
         else if(monthString===`11`) month = `Nov. `
         else if(monthString===`12`) month = `Dec. `
         else month = ``
-        console.log(dateString)
-        if (dateString[0] === `0`) dateString = dateString.substring(1,2)
-        let day = dateString.slice(8,10) + `, `
+
+        let day = dateString.slice(8,10)
         if (day[0] === `0`) day = day.substring(1,3)
+        day = day+ `, `
+
         return month+day+year
     }
 }

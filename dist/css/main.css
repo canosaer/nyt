@@ -334,8 +334,8 @@ a {
   grid-column: 2/5;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 0.17fr 0.05fr 0.7fr 0.25fr;
-  grid-template-columns: 0.17fr 0.05fr 0.7fr 0.25fr;
+  -ms-grid-columns: 0.17fr 0.05fr 0.7fr 0.4fr;
+  grid-template-columns: 0.17fr 0.05fr 0.7fr 0.4fr;
   grid-auto-rows: auto;
   padding: 1.75rem 0rem;
   border-bottom: 1px solid lightgray;
