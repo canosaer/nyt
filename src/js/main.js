@@ -4,23 +4,29 @@ class NYT_SearchAPI {
     API_KEY = `s1jci6o1poZJW3TJJdvuxK9q6bzo3U80`
 
     constructor() {
+        this.searchInput = document.querySelector(`input[name="term"]`)
 
         this.setupListener()
     }
 
     setupListener() {
         const searchButton = document.querySelector(`.search-controls__button`)
+
         searchButton.addEventListener(`click`, this.handleSearch)
+        this.searchInput.addEventListener(`keyup`, this.checkForEnter)
     }
 
     handleSearch = (evt) => {
-        const term = document.querySelector(`input[name="term"]`)
         const data = {
-            q: term.value,
+            q: this.searchInput.value,
             'api-key': this.API_KEY
         }
 
         axios.get( this.API_BASE_URL, { params: data }).then(this.processResults)
+    }
+
+    checkForEnter = (evt) => {
+        if(evt.key === `Enter`) this.handleSearch()
     }
 
     processResults = (response) => {
@@ -66,12 +72,14 @@ class NYT_SearchAPI {
             bylineP.textContent = doc.byline.original
             docRow.appendChild(bylineP)
 
-            let photoDiv = document.createElement(`div`)
-            photoDiv.classList.add(`results__photo`)
-            photoDiv.style.background = `url("https://www.nytimes.com/${doc.multimedia[16].url}")`
-            photoDiv.style.backgroundSize = `cover`
-            photoDiv.style.backgroundPoisition = `center`
-            docRow.appendChild(photoDiv)
+            let photoAnchor = document.createElement(`a`)
+            photoAnchor.classList.add(`results__photo`)
+            photoAnchor.style.background = `url("https://www.nytimes.com/${doc.multimedia[16].url}")`
+            photoAnchor.style.backgroundSize = `cover`
+            photoAnchor.style.backgroundPoisition = `center`
+            photoAnchor.href = doc.web_url
+            photoAnchor.setAttribute(`target`, `_blank`)
+            docRow.appendChild(photoAnchor)
 
             resultsSection.appendChild(docRow)
 

@@ -270,17 +270,8 @@ a {
   cursor: pointer;
   padding-left: 1.1rem;
 }
-.search-menu:after {
-  content: "";
-  position: absolute;
-  height: 0.6rem;
-  width: 0.6rem;
-  border-right: 2px solid gray;
-  border-bottom: 2px solid gray;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  top: 0px;
-  left: 11.75vw;
+.search-menu__arrow {
+  padding-left: 0.3rem;
 }
 .search-menu:hover {
   color: black;
@@ -361,7 +352,7 @@ a {
   grid-column: 3/4;
   font-size: 1.35rem;
   font-family: Georgia, serif;
-  padding: 0rem 1rem 0.35rem 0rem;
+  padding: 0rem 1.5rem 0.35rem 0rem;
   line-height: 1.5;
 }
 .results__abstract {
@@ -370,7 +361,7 @@ a {
   grid-column: 3/4;
   line-height: 1.5;
   margin-bottom: 0.4rem;
-  padding-right: 1rem;
+  padding-right: 1.5rem;
   color: #333;
 }
 .results__byline {
